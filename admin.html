@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - HealthyCal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('home') }}" class="logo">HealthyCal</a>
+        <div class="nav-links">
+            <a href="{{ url_for('admin_dashboard') }}" class="active">Dashboard</a>
+            <a href="{{ url_for('admin_users') }}">Users</a>
+            <a href="{{ url_for('admin_meals') }}">Meals</a>
+            <a href="{{ url_for('admin_fruits') }}">Fruits</a>
+            <a href="{{ url_for('admin_recipes') }}">Recipes</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <h1>Welcome to Admin Dashboard</h1>
+        <p>Manage users, meals, fruits, and recipes below.</p>
+        <div class="admin-section">
+            <h2>Manage Content</h2>
+            <ul>
+                <li><a href="{{ url_for('admin_users') }}">Manage Users</a></li>
+                <li><a href="{{ url_for('admin_meals') }}">Manage Meals</a></li>
+                <li><a href="{{ url_for('admin_fruits') }}">Manage Fruits</a></li>
+                <li><a href="{{ url_for('admin_recipes') }}">Manage Recipes</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 HealthyCal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

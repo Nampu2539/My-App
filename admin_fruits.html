@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Fruits - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('home') }}" class="logo">HealthyCal</a>
+        <div class="nav-links">
+            <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('admin_users') }}">Users</a>
+            <a href="{{ url_for('admin_meals') }}">Meals</a>
+            <a href="{{ url_for('admin_fruits') }}" class="active">Fruits</a>
+            <a href="{{ url_for('admin_recipes') }}">Recipes</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <h1>Manage Fruits</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Calories</th>
+                    <th>Protein</th>
+                    <th>Carbs</th>
+                    <th>Fat</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fruit in fruits %}
+                <tr>
+                    <td>{{ fruit.name }}</td>
+                    <td>{{ fruit.calories }}</td>
+                    <td>{{ fruit.protein }}</td>
+                    <td>{{ fruit.carbohydrates }}</td>
+                    <td>{{ fruit.fat }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_fruit', fruit_id=fruit.fruit_id) }}">Edit</a>
+                        <a href="{{ url_for('delete_fruit', fruit_id=fruit.fruit_id) }}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 HealthyCal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

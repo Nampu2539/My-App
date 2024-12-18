@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Recipes - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('home') }}" class="logo">HealthyCal</a>
+        <div class="nav-links">
+            <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('admin_users') }}">Users</a>
+            <a href="{{ url_for('admin_meals') }}">Meals</a>
+            <a href="{{ url_for('admin_fruits') }}">Fruits</a>
+            <a href="{{ url_for('admin_recipes') }}" class="active">Recipes</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <h1>Manage Recipes</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Calories</th>
+                    <th>Ingredients</th>
+                    <th>Instructions</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for recipe in recipes %}
+                <tr>
+                    <td>{{ recipe.name }}</td>
+                    <td>{{ recipe.calories }}</td>
+                    <td>{{ recipe.ingredients }}</td>
+                    <td>{{ recipe.instructions }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_recipe', recipe_id=recipe.recipe_id) }}">Edit</a>
+                        <a href="{{ url_for('delete_recipe', recipe_id=recipe.recipe_id) }}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 HealthyCal. All rights reserved.</p>
+    </footer>
+</body>
+</html>
